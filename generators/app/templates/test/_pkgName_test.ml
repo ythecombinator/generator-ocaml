@@ -5,7 +5,7 @@ open OUnit2
 
 let <%= pkgSlugName %>_test = ignore (run_test_tt_main ("<%= pkgSlugName %>" >::: [
 
-  "Returns the specified factorial" >:: (fun _ ->
+  "Returns the right value for the specified factorial" >:: (fun _ ->
     assert_equal 120 (<%= pkgSlugName %> 5)
   )
 

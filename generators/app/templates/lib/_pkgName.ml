@@ -1,6 +1,6 @@
 (* Example of a Factorial module *)
 
-let rec <%= pkgSlugName %> x =
+let rec <%= pkgSlugName %> n =
 
     match n with
     | 0 -> 1
