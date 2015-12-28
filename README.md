@@ -1,5 +1,12 @@
-# generator-ocaml [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
->  Yeoman generator to scaffold OCaml modules. 
+# Yeoman Generator for OCaml Modules
+
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+
+<p align="center">
+  <img src="logo.png">
+</p>
+
+>  A Yeoman generator that provides a functional boilerplate to easily scaffold OCaml modules.
 
 ## Installation
 
