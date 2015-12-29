@@ -57,3 +57,8 @@ Document api
     -no-links -docflags -d,doc/api,-colorize-code,-short-functors,-charset,utf-8
   PreCommand:           $rm -rf doc/api
   PostCommand:          mv _build/lib/api.docdir doc/api
+
+SourceRepository master
+  Type:     git
+  Location: https://github.com/<%= userName %>/<%= pkgSlugName %>.git
+  Browser:  https://github.com/<%= userName %>/<%= pkgSlugName %>
