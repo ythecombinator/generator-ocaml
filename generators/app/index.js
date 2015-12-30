@@ -7,7 +7,7 @@ var yeoman     = require('yeoman-generator')
     ,fs        = require('fs');
     ,path      = require('path');
     ,_         = require('lodash');
-    ,_s        = require('underscore.string');
+    ,s         = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -79,10 +79,17 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      // To access props later use this.props.someOption;
-
+      this.props.pkgSlugName = s.slugify(this.props.pkgName);
+      this.props.pkgCapitalizedName = s.capitalize(this.props.pkgName);
+      var d = new Date();
+      this.props.year = d.getFullYear();
+      this.props.date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+      if(!this.props.confirm) {
+        return process.exit(0);
+      }
       done();
     }.bind(this));
+
   },
 
   writing: function () {
