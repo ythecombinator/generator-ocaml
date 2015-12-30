@@ -92,12 +92,35 @@ module.exports = yeoman.generators.Base.extend({
 
   },
 
-  writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  },
+  writing: {
+
+    app: function () {
+
+      this.fs.copyTpl(
+        this.templatePath('_oasis'),
+        this.destinationPath('_oasis'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('Makefile'),
+        this.destinationPath('Makefile'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('lib/_pkgName.ml'),
+        this.destinationPath('lib/' + this.props.pkgSlugName + '.ml'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('test/_pkgName_test.ml'),
+        this.destinationPath('test/' + this.props.pkgSlugName + '_test.ml'),
+        this.props
+      );
+
+    },
 
   install: function () {
     this.installDependencies();
