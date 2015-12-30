@@ -13,20 +13,23 @@
   ],
   "main": "generators\\index.js",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "OCaml",
+    "package",
+    "module",
+    "OPAM",
+    "OASIS"
   ],
   "dependencies": {
     "yeoman-generator": "^0.21.1",
+    "iniparser": "^1.0.5",
     "chalk": "^1.0.0",
-    "yosay": "^1.0.2"
+    "lodash": "^3.10.1",
+    "underscore.string": "^3.2.2"
   },
   "devDependencies": {
     "yeoman-generator": "^0.19.0",
     "yeoman-assert": "^2.0.0",
-    "iniparser": "^1.0.5",
-    "chalk": "^1.0.0",
-    "lodash": "^3.10.1",
-    "underscore.string": "^3.2.2",
     "gulp": "^3.6.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
