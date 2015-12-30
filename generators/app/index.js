@@ -2,7 +2,12 @@
 
 var yeoman     = require('yeoman-generator')
     ,chalk     = require('chalk')
-    ,greetings = require('./greetings');
+    ,greetings = require('./greetings')
+    ,parser    = require('iniparser');
+    ,fs        = require('fs');
+    ,path      = require('path');
+    ,_         = require('lodash');
+    ,_s        = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
 
