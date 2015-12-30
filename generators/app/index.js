@@ -122,7 +122,73 @@ module.exports = yeoman.generators.Base.extend({
 
     },
 
-  install: function () {
-    this.installDependencies();
+    docs: function () {
+
+      this.fs.copyTpl(
+          this.templatePath('_README.md'),
+          this.destinationPath('README.md'),
+          this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_CONTRIBUTING.md'),
+        this.destinationPath('CONTRIBUTING.md'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('_CHANGELOG'),
+        this.destinationPath('CHANGELOG'),
+        this.props
+      );
+
+      if(this.props.license == 'APACHE') {
+        this.fs.copyTpl(
+          this.templatePath('_LICENSE_APACHE.md'),
+          this.destinationPath('LICENSE.md'),
+          this.props
+        );
+      } else if (this.props.license == 'BSD') {
+        this.fs.copyTpl(
+          this.templatePath('_LICENSE_BSD.md'),
+          this.destinationPath('LICENSE.md'),
+          this.props
+        );
+      } else if (this.props.license == 'GPLv3') {
+        this.fs.copyTpl(
+          this.templatePath('_LICENSE_GPLv3.md'),
+          this.destinationPath('LICENSE.md'),
+          this.props
+        );
+      } else {
+        this.fs.copyTpl(
+          this.templatePath('_LICENSE_MIT.md'),
+          this.destinationPath('LICENSE.md'),
+          this.props
+        );
+      }
+    },
+
+    general: function () {
+
+      this.fs.copyTpl(
+        this.templatePath('.travis.yml'),
+        this.destinationPath('.travis.yml'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('.gitignore'),
+        this.destinationPath('.gitignore'),
+        this.props
+      );
+
+      this.fs.copyTpl(
+        this.templatePath('.gitattributes'),
+        this.destinationPath('.gitattributes'),
+        this.props
+      );
+
+    }
   }
 });
