@@ -3,10 +3,10 @@
 var yeoman     = require('yeoman-generator')
     ,chalk     = require('chalk')
     ,greetings = require('./greetings')
-    ,parser    = require('iniparser');
-    ,fs        = require('fs');
-    ,path      = require('path');
-    ,_         = require('lodash');
+    ,parser    = require('iniparser')
+    ,fs        = require('fs')
+    ,path      = require('path')
+    ,_         = require('lodash')
     ,s         = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
@@ -17,30 +17,45 @@ module.exports = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(greetings)
 
-    var homeDir;
-    var osUserName;
-    var configFile;
-    var workingDirName = path.basename(process.cwd());
+    // `homeDir` will be used to find the `.gitconfig` file.
+    var homeDir
+        // `currentDir` will be used as a default in case of user not inserting.
+        // a project name
+        ,currentDir = path.basename(process.cwd())
+        // `user` will store username and email from GIT information.
+        ,user;
 
+    // Check OS
     if (process.platform === 'win32') {
       homeDir = process.env.USERPROFILE;
-      osUserName = process.env.USERNAME || path.basename(homeDir).toLowerCase();
     }
-
     else {
       homeDir = process.env.HOME || process.env.HOMEPATH;
-      osUserName = homeDir && homeDir.split('/').pop() || 'root';
     }
 
+    var gitConfigFile = path.join(homeDir, '.gitconfig');
+
+    if (fs.existsSync(configFile)) {
+      user = parser.parseSync(configFile).user;
+    }
+    else {
+      user = {
+        name: 'Matheus Brasil',
+        email: 'matheus.brasil10@gmail.com'
+      };
+    }
+
+    // Things that should be asked the user.
     var prompts = [
       {
         name: 'pkgName',
         message: 'What\'s the package name?',
-        default: workingDirName
+        default: currentDir
       },
       {
         name: 'pkgDescription',
-        message: 'What\'s your package all about?'
+        message: 'What\'s your package all about?',
+        default: 'An awesome OCaml module.'
       },
       {
         name: 'pkgVersion',
@@ -50,17 +65,17 @@ module.exports = yeoman.generators.Base.extend({
       {
         name: 'authorName',
         message: 'What\'s your name?',
-        default: 'Matheus'
+        default: user.name || ''
       },
       {
         name: 'authorEmail',
         message: 'What\'s your email?',
-        default: 'matheus.brasil10@gmail.com'
+        default: user.email || ''
       },
       {
         name: 'userName',
         message: 'What\'s your Github username?',
-        default: 'mabrasil'
+        required: true
       },
       {
         type: 'list',
@@ -77,6 +92,7 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
+    // Do some work around properties (SlugName, Date etc.)
     this.prompt(prompts, function (props) {
       this.props = props;
       this.props.pkgSlugName = s.slugify(this.props.pkgName);
@@ -92,8 +108,20 @@ module.exports = yeoman.generators.Base.extend({
 
   },
 
+  configuring: {
+
+    enforceFolderName: function () {
+      if (this.props.pkgSlugName !== _.last(this.destinationRoot().split(path.sep))) {
+        this.destinationRoot(this.props.pkgSlugName);
+      }
+      this.config.save();
+    }
+  },
+
+  // Things that should be generated in the boilerplate
   writing: {
 
+    // Main project files (OCaml files, testing files, OASIS spec etc.)
     app: function () {
 
       this.fs.copyTpl(
@@ -122,6 +150,7 @@ module.exports = yeoman.generators.Base.extend({
 
     },
 
+    // Docs-related files (README, LICENSE, CHANGELOG etc.)
     docs: function () {
 
       this.fs.copyTpl(
@@ -169,6 +198,7 @@ module.exports = yeoman.generators.Base.extend({
       }
     },
 
+    // (Git-related files and CI information)
     general: function () {
 
       this.fs.copyTpl(
@@ -188,7 +218,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.gitattributes'),
         this.props
       );
-
     }
   }
 });
