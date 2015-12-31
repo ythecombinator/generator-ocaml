@@ -25,7 +25,7 @@ module.exports = yeoman.generators.Base.extend({
         // `user` will store username and email from GIT information.
         ,user;
 
-    // Check OS
+    // Discover homeDir based on the OS
     if (process.platform === 'win32') {
       homeDir = process.env.USERPROFILE;
     }
@@ -35,14 +35,16 @@ module.exports = yeoman.generators.Base.extend({
 
     var gitConfigFile = path.join(homeDir, '.gitconfig');
 
-    if (fs.existsSync(configFile)) {
-      user = parser.parseSync(configFile).user;
+    if (fs.existsSync(gitConfigFile)) {
+      user = parser.parseSync(gitConfigFile).user;
+      username = parser.parseSync(gitConfigFile).github.user;
     }
     else {
       user = {
         name: 'Matheus Brasil',
         email: 'matheus.brasil10@gmail.com'
       };
+      username = 'mabrasil'
     }
 
     // Things that should be asked the user.
@@ -75,7 +77,7 @@ module.exports = yeoman.generators.Base.extend({
       {
         name: 'userName',
         message: 'What\'s your Github username?',
-        required: true
+        default: username || ''
       },
       {
         type: 'list',
