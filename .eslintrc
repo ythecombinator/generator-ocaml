@@ -41,7 +41,8 @@
     ],
     "quotes": [
       2,
-      "single"
+      "single",
+      "avoid-escape"
     ],
     "space-before-blocks": [
       2,
@@ -128,6 +129,7 @@
     "no-new-object": 2,
     "no-spaced-func": 2,
     "no-trailing-spaces": 2,
+    "no-unused-vars": [2, {"vars": "all", "varsIgnorePattern": "prompts"}],
     "semi": 2,
     "semi-spacing": [
       2,
