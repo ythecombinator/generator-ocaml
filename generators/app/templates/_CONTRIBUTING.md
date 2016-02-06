@@ -103,11 +103,11 @@ accurate comments, etc.) and any other requirements (such as test coverage).
 Follow this process if you'd like your work considered for inclusion in the
 project:
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project [here](https://github.com/<your-username>/<%= pkgSlugName %>#fork-destination-box), clone your fork, and configure the remotes:
+1. [Fork](http://help.github.com/fork-a-repo/) the project [here](https://github.com/<%= pkgSlugName %>/<%= userName %>#fork-destination-box), clone your fork, and configure the remotes:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/<%= pkgSlugName %>
+   git clone https://github.com/<%= userName %>/<%= pkgSlugName %>
    # Navigate to the newly cloned directory
    cd <%= pkgSlugName %>
    # Assign the original repo to a remote called "upstream"
@@ -147,5 +147,5 @@ project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-   [here](https://github.com/<your-username>/<%= pkgSlugName %>/compare) with a
+   [here](https://github.com/<%= userName %>/<%= pkgSlugName %>/compare) with a
    clear title and description.
