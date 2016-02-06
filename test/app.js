@@ -1,9 +1,8 @@
 'use strict';
 
-var path     = require('path')
-    ,assert  = require('yeoman-assert')
-    ,helpers = require('yeoman-generator').test
-    ,os      = require('os');
+var path = require('path');
+var assert = require('yeoman-assert');
+var helpers = require('yeoman-generator').test;
 
 describe('generator-ocaml:app', function () {
   before(function (done) {
@@ -18,24 +17,24 @@ describe('generator-ocaml:app', function () {
       confirm: true
     };
     helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({someOption: true})
-      .withPrompts({someAnswer: true})
+      .withOptions({ skipInstall: true })
+      .withPrompts(prompts)
       .on('end', done);
   });
 
-  it('creates files', function () {
+  it('Creates files', function () {
     assert.file([
-    'lib/factorial.ml',
-    'test/factorial_test.ml',
-    '_oasis',
-    'Makefile',
-    '.travis.yml',
-    '.gitattributes',
-    '.gitignore',
-    'README.md',
-    'LICENSE.md',
-    'CONTRIBUTING.md',
-    'CHANGELOG.md'
+      'lib/factorial.ml',
+      'test/factorial_test.ml',
+      '_oasis',
+      'Makefile',
+      '.travis.yml',
+      '.gitattributes',
+      '.gitignore',
+      'README.md',
+      'LICENSE.md',
+      'CONTRIBUTING.md',
+      'CHANGELOG.md'
     ]);
   });
 });
