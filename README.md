@@ -71,7 +71,7 @@ npm install -g generator-ocaml
 
 <p align="center">
   <a href="">
-    <img alt="yo OCaml!" src="http://i.imgur.com/m3m86BA.png">
+    <img alt="yo OCaml!" src="http://i.imgur.com/qUjy4jZ.png" width="900px">
   </a>
 </p>
 
@@ -83,15 +83,32 @@ npm install -g generator-ocaml
   yo ocaml
   ```
 
-  > You will be asked the following:
+  > You will be asked the following about your project:
 
-    - *What's the package name?*
-    - *What's your package all about?*
-    - *What's the package version?*
-    - *What's your name?*
-    - *What's your email?*
-    - *What's your Github username?*
-    - *Choose your license type (Use arrow keys)*
+  > - *What's the package name?*
+  > - *What's your package all about?*
+  > - *What's the package version?*
+  > - *What's your name?*
+  > - *What's your email?*
+  > - *What's your Github username?*
+  > - *Choose your license type (Use arrow keys)*
+
+  And the you should see the following structure:
+
+  ```bash
+  |-- lib/
+  |   |-- myModule.ml/
+  |-- test/
+  |   |-- myModule_test.ml
+  |-- .gitattributes
+  |-- .gitignore
+  |-- _oasis
+  |-- CHANGELOG.md
+  |-- CONTRIBUTING.md
+  |-- LICENSE.md
+  |-- Makefile
+  |-- README.md
+  ```
 
 1. Install the *OCaml* dependencies:
 
