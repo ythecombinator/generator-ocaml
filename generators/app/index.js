@@ -1,13 +1,12 @@
 'use strict';
 
-var yeoman     = require('yeoman-generator')
-    ,chalk     = require('chalk')
-    ,greetings = require('./greetings')
-    ,parser    = require('iniparser')
-    ,fs        = require('fs')
-    ,path      = require('path')
-    ,_         = require('lodash')
-    ,s         = require('underscore.string');
+var yeoman = require('yeoman-generator');
+var greetings = require('./greetings');
+var parser = require('iniparser');
+var fs = require('fs');
+var path = require('path');
+var _ = require('lodash');
+var s = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -15,21 +14,20 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(greetings)
+    this.log(greetings);
 
     // `homeDir` will be used to find the `.gitconfig` file.
-    var homeDir
-        // `currentDir` will be used as a default in case of user not inserting.
-        // a project name
-        ,currentDir = path.basename(process.cwd())
-        // `user` will store username and email from GIT information.
-        ,user;
+    var homeDir;
+    // `currentDir` will be used as a default in case of user not inserting.
+    // a project name
+    var currentDir = path.basename(process.cwd());
+    // `user` will store username and email from GIT information.
+    var user;
 
     // Discover homeDir based on the OS
     if (process.platform === 'win32') {
       homeDir = process.env.USERPROFILE;
-    }
-    else {
+    } else {
       homeDir = process.env.HOME || process.env.HOMEPATH;
     }
 
@@ -37,14 +35,11 @@ module.exports = yeoman.generators.Base.extend({
 
     if (fs.existsSync(gitConfigFile)) {
       user = parser.parseSync(gitConfigFile).user;
-      username = parser.parseSync(gitConfigFile).github.user;
-    }
-    else {
+    } else {
       user = {
         name: 'Matheus Brasil',
         email: 'matheus.brasil10@gmail.com'
       };
-      username = 'mabrasil'
     }
 
     // Things that should be asked the user.
@@ -77,7 +72,7 @@ module.exports = yeoman.generators.Base.extend({
       {
         name: 'userName',
         message: 'What\'s your Github username?',
-        default: username || ''
+        default: 'mabrasil'
       },
       {
         type: 'list',
@@ -102,7 +97,7 @@ module.exports = yeoman.generators.Base.extend({
       var d = new Date();
       this.props.year = d.getFullYear();
       this.props.date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-      if(!this.props.confirm) {
+      if (!this.props.confirm) {
         return process.exit(0);
       }
       done();
@@ -168,24 +163,24 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       this.fs.copyTpl(
-        this.templatePath('_CHANGELOG'),
-        this.destinationPath('CHANGELOG'),
+        this.templatePath('_CHANGELOG.md'),
+        this.destinationPath('CHANGELOG.md'),
         this.props
       );
 
-      if(this.props.license == 'APACHE') {
+      if (this.props.license === 'APACHE') {
         this.fs.copyTpl(
           this.templatePath('_LICENSE_APACHE.md'),
           this.destinationPath('LICENSE.md'),
           this.props
         );
-      } else if (this.props.license == 'BSD') {
+      } else if (this.props.license === 'BSD') {
         this.fs.copyTpl(
           this.templatePath('_LICENSE_BSD.md'),
           this.destinationPath('LICENSE.md'),
           this.props
         );
-      } else if (this.props.license == 'GPLv3') {
+      } else if (this.props.license === 'GPLv3') {
         this.fs.copyTpl(
           this.templatePath('_LICENSE_GPLv3.md'),
           this.destinationPath('LICENSE.md'),
@@ -204,19 +199,19 @@ module.exports = yeoman.generators.Base.extend({
     general: function () {
 
       this.fs.copyTpl(
-        this.templatePath('.travis.yml'),
+        this.templatePath('travis.yml'),
         this.destinationPath('.travis.yml'),
         this.props
       );
 
       this.fs.copyTpl(
-        this.templatePath('.gitignore'),
+        this.templatePath('gitignore'),
         this.destinationPath('.gitignore'),
         this.props
       );
 
       this.fs.copyTpl(
-        this.templatePath('.gitattributes'),
+        this.templatePath('gitattributes'),
         this.destinationPath('.gitattributes'),
         this.props
       );
