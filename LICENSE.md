@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 Matheus Brasil <matheus.brasil10@gmail.com> (https://github.com/mabrasil)
+Copyright (c) 2015 [Matheus Brasil](https://github.com/mabrasil)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

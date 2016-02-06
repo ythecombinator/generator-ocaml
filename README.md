@@ -26,17 +26,19 @@
 - [Usage](#usage)
   - [Getting Started](getting-started)
   - [Other Options](#other-options)
+- [Contributing](#contributing)
 - [History](#history)
 - [License](#license)
+- [Credits](#credits)
 
 ## This Project
 
 ### Scaffold OCaml modules?
 
-<img src="http://namaristats.com/static/img/langs/logo-ocaml.png" align="left" alt="OCaml">
+<img src="http://i.imgur.com/f6AWgvy.png" align="left" alt="OCaml">
 
 OCaml is a general purpose programming language with an emphasis on expressiveness
-and safety which supports functional, imperative and object-oriented paradigms
+and safety which supports both functional, imperative and object-oriented paradigms
 and features a powerful type system, user-definable algebraic data types and
 pattern-matching.
 
@@ -187,6 +189,10 @@ These are the commands you have in `setup.ml`:
 | `-ignore-plugins`       | Ignore plugin's field                                            |
 | `-help`, `--help`       | Display this list of options                                     |
 
+## Contributing
+
+Contributions are very welcome! If you'd like to contribute, these
+[guidelines](CONTRIBUTING.md) may help you.
 
 ## History
 
@@ -194,13 +200,12 @@ Check the [releases list](https://github.com/mabrasil/generator-ocaml/releases/)
 
 ## License
 
-MIT © [Matheus Brasil](https://github.com/mabrasil)
+[generator-ocaml](https://github.com/mabrasil/generator-ocaml/) is distributed under the
+MIT License, available in this repository.
 
-[npm-image]: https://badge.fury.io/js/generator-ocaml.svg
-[npm-url]: https://npmjs.org/package/generator-ocaml
-[travis-image]: https://travis-ci.org/mabrasil/generator-ocaml.svg?branch=master
-[travis-url]: https://travis-ci.org/mabrasil/generator-ocaml
-[daviddm-image]: https://david-dm.org/mabrasil/generator-ocaml.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/mabrasil/generator-ocaml
-[coveralls-image]: https://coveralls.io/repos/mabrasil/generator-ocaml/badge.svg
-[coveralls-url]: https://coveralls.io/r/mabrasil/generator-ocaml
+All contributions are assumed to be also licensed under the same.
+
+## Credits
+
+The templates codebase was originally inspired by these
+[two](https://github.com/yuanqing/ocaml-boilerplate) [projects](https://github.com/perror/ocaml-boilerplate).
