@@ -22,7 +22,7 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src('generators\**\*.js')
+  return gulp.src('generators/**/*.js')
     .pipe(istanbul({
       includeUntested: true
     }))
@@ -32,7 +32,7 @@ gulp.task('pre-test', function () {
 gulp.task('test', ['pre-test'], function (cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  gulp.src('test/app.js')
     .pipe(plumber())
     .pipe(mocha({reporter: 'spec'}))
     .on('error', function (err) {
