@@ -17,6 +17,18 @@
   <a href="daviddm-url"><img alt="devDependency Status" src="daviddm-image"></a>
 </p>
 
+## Table of Contents
+
+- [This Project](#this-project)
+  - [Scaffold OCaml modules?](#scaffold-ocaml-modules)
+  - [Getting To Know Yeoman](#getting-to-know-yeoman)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Getting Started](getting-started)
+  - [Other Options](#other-options)
+- [History](#history)
+- [License](#license)
+
 ## This Project
 
 ### Scaffold OCaml modules?
@@ -57,6 +69,12 @@ npm install -g generator-ocaml
 
 ## Usage
 
+<p align="center">
+  <a href="">
+    <img alt="yo OCaml!" src="http://i.imgur.com/m3m86BA.png">
+  </a>
+</p>
+
 ### Getting Started
 
 1. Generate your new project:
@@ -64,6 +82,16 @@ npm install -g generator-ocaml
   ```bash
   yo ocaml
   ```
+
+  > You will be asked the following:
+
+    - *What's the package name?*
+    - *What's your package all about?*
+    - *What's the package version?*
+    - *What's your name?*
+    - *What's your email?*
+    - *What's your Github username?*
+    - *Choose your license type (Use arrow keys)*
 
 1. Install the *OCaml* dependencies:
 
@@ -90,6 +118,7 @@ the project source.
   ```bash
   make
   ```
+
 ### Other Options
 
 To run the test suite, you just have to:
