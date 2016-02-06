@@ -7,36 +7,12 @@
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#License)
 
 ## Getting Started
 
 Change this template to create your own module.
-
-### Setup
-
-Make sure you have the main dependencies to run this boilerplate:
-
-- [OCaml](https://ocaml.org/docs/install.html)
-- [OPAM](https://opam.ocaml.org/doc/Install.html)
-- [GNU Make](https://www.gnu.org/software/make/)
-
-Then do:
-
-```
-$ opam install oasis ounit bissect
-```
-
-### Usage
-
-To build the project just do:
-
-```
-$ make
-```
 
 ## Contributing
 
