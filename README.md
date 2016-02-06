@@ -33,6 +33,13 @@
 
 ### Scaffold OCaml modules?
 
+<img src="http://namaristats.com/static/img/langs/logo-ocaml.png" align="left" alt="OCaml">
+
+OCaml is a general purpose programming language with an emphasis on expressiveness
+and safety which supports functional, imperative and object-oriented paradigms
+and features a powerful type system, user-definable algebraic data types and
+pattern-matching.
+
 This project is [Yeoman generator](#getting-to-know-yeoman) that provides a
 [OCaml](https://ocaml.org/) project skeleton with the following integrated
 features:
@@ -44,7 +51,12 @@ features:
 
 ### Getting To Know Yeoman
 
-*Yo* is a [node.js](https://nodejs.org/) tool used to scaffold new applications. It can create common project assets like stylesheets and JavaScript files. Basically Yo provides an easy way to create all of the boilerplate code you need to get started on a project.
+<img src="http://128bitstudios.com/images/logo/yeoman.png" align="right" alt="Yeoman">
+
+*Yeoman* is a [node.js](https://nodejs.org/) tool used to scaffold new
+applications. It can create common project assets like stylesheets and JavaScript
+files. Basically Yo provides an easy way to create all of the boilerplate code
+you need to get started on a project.
 
 Feel free to learn more about it [here](http://yeoman.io/).
 
