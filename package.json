@@ -21,23 +21,23 @@
     "OASIS"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.21.1",
-    "chalk": "^1.0.0",
+    "yeoman-generator": "^0.22.5",
+    "chalk": "^1.1.1",
     "iniparser": "^1.0.5",
-    "lodash": "^3.10.1",
+    "lodash": "^4.2.1",
     "underscore.string": "^3.2.2"
   },
   "devDependencies": {
-    "yeoman-generator": "^0.21.1",
-    "yeoman-assert": "^2.0.0",
-    "gulp": "^3.6.0",
-    "gulp-eslint": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-eslint": "^1.1.1",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^0.9.0",
-    "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0",
-    "gulp-nsp": "^2.1.0",
-    "gulp-coveralls": "^0.1.0"
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nsp": "^2.3.0",
+    "gulp-plumber": "^1.0.1",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-generator": "^0.22.5"
   },
   "repository": "https://github.com/mabrasil/generator-ocaml.git",
   "scripts": {
