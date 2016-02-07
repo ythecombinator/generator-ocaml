@@ -25,22 +25,19 @@ module.exports = yeoman.generators.Base.extend({
     var user;
 
     // Discover homeDir based on the OS
-    if (process.platform === 'win32') {
-      homeDir = process.env.USERPROFILE;
-    } else {
-      homeDir = process.env.HOME || process.env.HOMEPATH;
-    }
+    homedir = process.platform === 'win32'
+      ? /* then      */ process.env.USERPROFILE
+      : /* otherwise */ process.env.HOME || process.env.HOMEPATH;
 
     var gitConfigFile = path.join(homeDir, '.gitconfig');
 
-    if (fs.existsSync(gitConfigFile)) {
-      user = parser.parseSync(gitConfigFile).user;
-    } else {
-      user = {
+    // `user` will store username and email from GIT information.
+    user = fs.existSync(gitConfigFile)
+      ? /* then      */ parser.parseSync(gitConfigFile).user
+      : /* otherwise */ {
         name: 'Matheus Brasil',
         email: 'matheus.brasil10@gmail.com'
       };
-    }
 
     // Things that should be asked the user.
     var prompts = [
@@ -91,10 +88,11 @@ module.exports = yeoman.generators.Base.extend({
 
     // Do some work around properties (SlugName, Date etc.)
     this.prompt(prompts, function (props) {
+      var d = new Date();
+
       this.props = props;
       this.props.pkgSlugName = s.slugify(this.props.pkgName);
       this.props.pkgCapitalizedName = s.capitalize(this.props.pkgName);
-      var d = new Date();
       this.props.year = d.getFullYear();
       this.props.date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
       if (!this.props.confirm) {
@@ -106,7 +104,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   configuring: {
-
     enforceFolderName: function () {
       if (this.props.pkgSlugName !== _.last(this.destinationRoot().split(path.sep))) {
         this.destinationRoot(this.props.pkgSlugName);
@@ -117,7 +114,6 @@ module.exports = yeoman.generators.Base.extend({
 
   // Things that should be generated in the boilerplate
   writing: {
-
     // Main project files (OCaml files, testing files, OASIS spec etc.)
     app: function () {
 
@@ -144,16 +140,14 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('test/' + this.props.pkgSlugName + '_test.ml'),
         this.props
       );
-
     },
 
     // Docs-related files (README, LICENSE, CHANGELOG etc.)
     docs: function () {
-
       this.fs.copyTpl(
-          this.templatePath('_README.md'),
-          this.destinationPath('README.md'),
-          this.props
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md'),
+        this.props
       );
 
       this.fs.copyTpl(
@@ -168,36 +162,22 @@ module.exports = yeoman.generators.Base.extend({
         this.props
       );
 
-      if (this.props.license === 'APACHE') {
-        this.fs.copyTpl(
-          this.templatePath('_LICENSE_APACHE.md'),
-          this.destinationPath('LICENSE.md'),
-          this.props
-        );
-      } else if (this.props.license === 'BSD') {
-        this.fs.copyTpl(
-          this.templatePath('_LICENSE_BSD.md'),
-          this.destinationPath('LICENSE.md'),
-          this.props
-        );
-      } else if (this.props.license === 'GPLv3') {
-        this.fs.copyTpl(
-          this.templatePath('_LICENSE_GPLv3.md'),
-          this.destinationPath('LICENSE.md'),
-          this.props
-        );
-      } else {
-        this.fs.copyTpl(
-          this.templatePath('_LICENSE_MIT.md'),
-          this.destinationPath('LICENSE.md'),
-          this.props
-        );
-      }
+      // License copying
+      var licenses = ['APACHE', 'BSD', 'GPLv3'];
+
+      this.fs.copyTpl(
+        this.templatePath(
+          licenses.indexOf(this.props.license) !== -1
+            ? /* then      */ '_LICENSE_' + this.props.license + '.md'
+            : /* otherwise */ '_LICENSE.md'
+        ),
+        this.destinationPath('LICENSE.md'),
+        this.props
+      );
     },
 
     // (Git-related files and CI information)
     general: function () {
-
       this.fs.copyTpl(
         this.templatePath('travis.yml'),
         this.destinationPath('.travis.yml'),
