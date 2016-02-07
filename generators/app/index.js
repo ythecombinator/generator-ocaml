@@ -25,7 +25,7 @@ module.exports = yeoman.generators.Base.extend({
     var user;
 
     // Discover homeDir based on the OS
-    homedir = process.platform === 'win32'
+    homeDir = process.platform === 'win32'
       ? /* then      */ process.env.USERPROFILE
       : /* otherwise */ process.env.HOME || process.env.HOMEPATH;
 
