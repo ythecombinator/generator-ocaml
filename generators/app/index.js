@@ -26,15 +26,14 @@ module.exports = yeoman.generators.Base.extend({
 
     // Discover homeDir based on the OS
     homeDir = process.platform === 'win32'
-      ? /* then      */ process.env.USERPROFILE
-      : /* otherwise */ process.env.HOME || process.env.HOMEPATH;
+      ? process.env.USERPROFILE
+      : process.env.HOME || process.env.HOMEPATH;
 
     var gitConfigFile = path.join(homeDir, '.gitconfig');
 
-    // `user` will store username and email from GIT information.
-    user = fs.existSync(gitConfigFile)
-      ? /* then      */ parser.parseSync(gitConfigFile).user
-      : /* otherwise */ {
+    user = fs.existsSync(gitConfigFile)
+      ? parser.parseSync(gitConfigFile).user
+      : {
         name: 'Matheus Brasil',
         email: 'matheus.brasil10@gmail.com'
       };
@@ -89,7 +88,6 @@ module.exports = yeoman.generators.Base.extend({
     // Do some work around properties (SlugName, Date etc.)
     this.prompt(prompts, function (props) {
       var d = new Date();
-
       this.props = props;
       this.props.pkgSlugName = s.slugify(this.props.pkgName);
       this.props.pkgCapitalizedName = s.capitalize(this.props.pkgName);
@@ -104,6 +102,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   configuring: {
+
     enforceFolderName: function () {
       if (this.props.pkgSlugName !== _.last(this.destinationRoot().split(path.sep))) {
         this.destinationRoot(this.props.pkgSlugName);
@@ -114,6 +113,7 @@ module.exports = yeoman.generators.Base.extend({
 
   // Things that should be generated in the boilerplate
   writing: {
+
     // Main project files (OCaml files, testing files, OASIS spec etc.)
     app: function () {
 
@@ -140,14 +140,16 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('test/' + this.props.pkgSlugName + '_test.ml'),
         this.props
       );
+
     },
 
     // Docs-related files (README, LICENSE, CHANGELOG etc.)
     docs: function () {
+
       this.fs.copyTpl(
-        this.templatePath('_README.md'),
-        this.destinationPath('README.md'),
-        this.props
+          this.templatePath('_README.md'),
+          this.destinationPath('README.md'),
+          this.props
       );
 
       this.fs.copyTpl(
@@ -162,14 +164,13 @@ module.exports = yeoman.generators.Base.extend({
         this.props
       );
 
-      // License copying
       var licenses = ['APACHE', 'BSD', 'GPLv3'];
 
       this.fs.copyTpl(
         this.templatePath(
           licenses.indexOf(this.props.license) !== -1
-            ? /* then      */ '_LICENSE_' + this.props.license + '.md'
-            : /* otherwise */ '_LICENSE.md'
+            ? '_LICENSE_' + this.props.license + '.md'
+            : '_LICENSE_MIT.md'
         ),
         this.destinationPath('LICENSE.md'),
         this.props
@@ -178,6 +179,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // (Git-related files and CI information)
     general: function () {
+
       this.fs.copyTpl(
         this.templatePath('travis.yml'),
         this.destinationPath('.travis.yml'),
