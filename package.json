@@ -21,28 +21,28 @@
     "OASIS"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.22.5",
     "chalk": "^1.1.1",
     "iniparser": "^1.0.5",
     "lodash": "^4.2.1",
-    "underscore.string": "^3.2.2"
+    "underscore.string": "^3.2.2",
+    "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-eslint": "^1.1.1",
-    "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-mocha": "^2.2.0",
-    "gulp-nsp": "^2.3.0",
-    "gulp-plumber": "^1.0.1",
+    "coveralls": "^2.11.6",
+    "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.0.0",
     "yeoman-assert": "^2.0.0",
-    "yeoman-generator": "^0.22.5"
+    "yeoman-generator": "^0.22.5",
+    "yeoman-test": "^1.0.0"
   },
   "repository": "https://github.com/mabrasil/generator-ocaml.git",
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "setup":"npm install -g mocha istanbul",
+    "prepublish": "npm run setup",
+    "lint": "eslint generators/**/*.js",
+    "tests": "mocha",
+    "report": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "npm run lint && npm run tests && npm run report"
   },
   "license": "MIT"
 }
