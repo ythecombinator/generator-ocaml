@@ -10,6 +10,8 @@
 
 <p align="center">
 
+  <a href="https://codeship.com/projects/132638"><img alt="Build Status" src="https://codeship.com/projects/33492670-b039-0133-9188-565ee1f98c10/status?branch=master"></a>
+
   <a href="https://travis-ci.org/mabrasil/generator-ocaml"><img alt="Build Status" src="https://travis-ci.org/mabrasil/generator-ocaml.svg?branch=master"></a>
 
   <a href="https://codeclimate.com/github/mabrasil/generator-ocaml"><img alt="Code Climate" src="https://codeclimate.com/github/mabrasil/generator-ocaml/badges/gpa.svg"/></a>
