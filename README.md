@@ -9,12 +9,15 @@
 </p>
 
 <p align="center">
-  <a href="npm-url"><img alt="NPM version" src="npm-image"></a>
-  <a href="travis-url"><img alt="Build Status" src="travis-image"></a>
-  <a href="codeclimate-url"><img alt="Code Quality" src="codeclimate-image"></a>
-  <a href="coveralls-url"><img alt="Coverage Status" src="coveralls-image"></a>
-  <a href="daviddm-url"><img alt="Dependency Status" src="daviddm-image"></a>
-  <a href="daviddm-url"><img alt="devDependency Status" src="daviddm-image"></a>
+
+  <a href="https://travis-ci.org/mabrasil/generator-ocaml"><img alt="Build Status" src="https://travis-ci.org/mabrasil/generator-ocaml.svg?branch=master"></a>
+
+  <a href="https://codeclimate.com/github/mabrasil/generator-ocaml"><img alt="Code Climate" src="https://codeclimate.com/github/mabrasil/generator-ocaml/badges/gpa.svg"/></a>
+
+  <a href="https://david-dm.org/mabrasil/generator-ocaml" title="Dependency status"><img src="https://david-dm.org/mabrasil/generator-ocaml.svg"/></a>
+
+  <a href="https://david-dm.org/mabrasil/generator-ocaml#info=devDependencies" title="devDependency status"><img src="https://david-dm.org/mabrasil/generator-ocaml/dev-status.svg"/></a>
+
 </p>
 
 ## Table of Contents
