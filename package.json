@@ -37,7 +37,7 @@
   },
   "repository": "https://github.com/mabrasil/generator-ocaml.git",
   "scripts": {
-    "setup":"npm install -g mocha istanbul",
+    "setup":"npm install -g eslint mocha istanbul",
     "prepublish": "npm run setup",
     "lint": "eslint generators/**/*.js",
     "tests": "mocha",
