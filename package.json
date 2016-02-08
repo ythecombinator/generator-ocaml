@@ -28,7 +28,6 @@
     "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {
-    "coveralls": "^2.11.6",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.0.0",
     "yeoman-assert": "^2.0.0",
@@ -41,7 +40,7 @@
     "prepublish": "npm run setup",
     "lint": "eslint generators/**/*.js",
     "tests": "mocha",
-    "report": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "report": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
     "test": "npm run lint && npm run tests && npm run report"
   },
   "license": "MIT"
