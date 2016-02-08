@@ -31,6 +31,7 @@
 - [Usage](#usage)
   - [Getting Started](getting-started)
   - [Other Options](#other-options)
+- [Development](#development)
 - [Contributing](#contributing)
 - [History](#history)
 - [License](#license)
@@ -193,6 +194,24 @@ These are the commands you have in `setup.ml`:
 | `-debug`                | Output debug message                                             |
 | `-ignore-plugins`       | Ignore plugin's field                                            |
 | `-help`, `--help`       | Display this list of options                                     |
+
+## Development
+
+All the tasks needed for development automation are defined in the
+[`package.json`](package.json) *scripts* property and can be run via:
+
+`npm run <command>`
+
+Here is a summary of all the commands:
+
+| **Command** |                                   **Description**                                       |
+|-------------|-----------------------------------------------------------------------------------------|
+| `setup`     | Installs global Node dependencies needed for development                                |
+| `lint`      | Runs [ESLint](http://eslint.org/) as a code linting utility                             |
+| `tests`     | Runs [Mocha](https://mochajs.org/) in BDD mode.                                         |
+| `report`    | Runs [Istanbul](https://github.com/gotwarlost/istanbul) coverage reports on Mocha tests |
+| `test`      | Runs both `lint`, `tests` and `report` commands                                         |
+
 
 ## Contributing
 

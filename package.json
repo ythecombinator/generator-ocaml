@@ -31,7 +31,6 @@
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.0.0",
     "yeoman-assert": "^2.0.0",
-    "yeoman-generator": "^0.22.5",
     "yeoman-test": "^1.0.0"
   },
   "repository": "https://github.com/mabrasil/generator-ocaml.git",
