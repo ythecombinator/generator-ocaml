@@ -8,7 +8,7 @@ var path = require('path');
 var _ = require('lodash');
 var s = require('underscore.string');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
   prompting: function () {
     var done = this.async();
