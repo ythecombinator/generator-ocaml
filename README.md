@@ -55,7 +55,7 @@ features:
 - The [OASIS](http://oasis.forge.ocamlcore.org/) build-system
 - The [OCamlDoc](http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html) automatic documentation generation
 - The [OUnit](http://ounit.forge.ocamlcore.org/) testing framework
-- The [Bissect](http://bisect.x9c.fr/) code coverage framework
+- The [Bisect](http://bisect.x9c.fr/) code coverage framework
 
 ### Getting To Know Yeoman
 
@@ -134,7 +134,7 @@ npm install -g generator-ocaml
 
   ```bash
   opam init
-  opam install oasis ounit bissect
+  opam install oasis ounit bisect
   ```
 
 1. Generate the `setup.ml` file - which will handle any high-level operation on
