@@ -1,42 +1,42 @@
 SETUP = ocaml setup.ml
 
 build: setup.data
-  $(SETUP) -build $(BUILDFLAGS)
+	$(SETUP) -build $(BUILDFLAGS)
 
 doc: setup.data build
-  $(SETUP) -doc $(DOCFLAGS)
+	$(SETUP) -doc $(DOCFLAGS)
 
 test: setup.data build
-  $(SETUP) -test $(TESTFLAGS)
+	$(SETUP) -test $(TESTFLAGS)
 
 report_dir:
-  mkdir coverage
+	mkdir coverage
 
 report: report_dir
-  bisect-report -I _build -html coverage $(shell ls -t bisect*.out | head -1)
+	bisect-report -I _build -html coverage $(shell ls -t bisect*.out | head -1)
 
 all:
-  $(SETUP) -all $(ALLFLAGS)
+	$(SETUP) -all $(ALLFLAGS)
 
 install: setup.data
-  $(SETUP) -install $(INSTALLFLAGS)
+	$(SETUP) -install $(INSTALLFLAGS)
 
 uninstall: setup.data
-  $(SETUP) -uninstall $(UNINSTALLFLAGS)
+	$(SETUP) -uninstall $(UNINSTALLFLAGS)
 
 reinstall: setup.data
-  $(SETUP) -reinstall $(REINSTALLFLAGS)
+	$(SETUP) -reinstall $(REINSTALLFLAGS)
 
 clean:
-  $(SETUP) -clean $(CLEANFLAGS)
+	$(SETUP) -clean $(CLEANFLAGS)
 
 distclean:
-  $(SETUP) -distclean $(DISTCLEANFLAGS)
+	$(SETUP) -distclean $(DISTCLEANFLAGS)
 
 setup.data:
-  $(SETUP) -configure $(CONFIGUREFLAGS)
+	$(SETUP) -configure $(CONFIGUREFLAGS)
 
 configure:
-  $(SETUP) -configure $(CONFIGUREFLAGS)
+	$(SETUP) -configure $(CONFIGUREFLAGS)
 
 .PHONY: build doc test report all install uninstall reinstall clean distclean configure
